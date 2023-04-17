@@ -38,8 +38,14 @@ plt.title('worst perimeter')
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Olhando esse histograma, não podemos afirmar que ele possui uma distribuição normal, pois não possui a simetria em torno da sua média.
+# Porém, devemos investigar, pois parece se aproximar de uma normal. 
+# Podemos investigar através do teste de shapiro-wilk se esses dados possuem uma distribuição normal. 
+
 sns.displot(df['worst radius'], kde=False, bins=10, color='black')
 plt.title('worst radius')
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 sns.displot(df['worst area'], kde=False, bins=10, color='black')
 plt.title('worst area')
