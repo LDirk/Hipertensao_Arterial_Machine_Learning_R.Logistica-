@@ -9,6 +9,9 @@ import seaborn as sns
 
 df = pd.read_csv("/content/breast_cancer - breast_cancer.csv")
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 sns.displot(df['worst concave points'], kde=False, bins=10, color='black')
 plt.title('worst concave points')
 
@@ -23,3 +26,25 @@ plt.title('worst radius')
 
 sns.displot(df['worst area'], kde=False, bins=10, color='black')
 plt.title('worst area')
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+plt.scatter(df['worst concave points'], df['mean concavity'])
+plt.xlabel('worst concave points')
+plt.ylabel('mean concavity')
+
+plt.scatter(df['worst concave points'], df['worst perimeter'])
+plt.xlabel('worst concave points')
+plt.ylabel('worst perimeter')
+
+plt.scatter(df['worst concave points'], df['worst radius'])
+plt.xlabel('worst concave points')
+plt.ylabel('worst radius')
+
+plt.scatter(df['worst concave points'], df['worst area'])
+plt.xlabel('worst concave points')
+plt.ylabel('worst area')
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
