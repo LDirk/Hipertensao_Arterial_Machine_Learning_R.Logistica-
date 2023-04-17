@@ -47,4 +47,20 @@ plt.xlabel('worst concave points')
 plt.ylabel('worst area')
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+plt.scatter(df['mean concavity'], df['worst perimeter'])
+plt.xlabel('mean concavity')
+plt.ylabel('worst perimeter')
+
+
+plt.scatter(df['mean concavity'], df['worst radius'])
+plt.xlabel('mean concavity')
+plt.ylabel('worst radius')
+
+plt.scatter(df['mean concavity'], df['worst area'])
+plt.xlabel('mean concavity')
+plt.ylabel('worst area')
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
