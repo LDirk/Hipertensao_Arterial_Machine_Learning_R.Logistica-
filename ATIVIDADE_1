@@ -11,6 +11,9 @@ df = pd.read_csv("/content/breast_cancer - breast_cancer.csv")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Não possui nenhuma semelhança com a distribuição normal. 
+# A sua grande massa de probabilidade se encontra nos valores 0 a 100. 
+# Não possui simetria em torno da sua média e mediana. 
 
 sns.displot(df['worst concave points'], kde=False, bins=10, color='black')
 plt.title('worst concave points')
