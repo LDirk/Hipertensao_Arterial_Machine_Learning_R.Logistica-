@@ -47,6 +47,10 @@ plt.title('worst radius')
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Não possui nenhuma semelhança com a distribuição normal. 
+# A sua grande massa de probabilidade se encontra nos valores 0 a 1000. 
+# Não possui simetria em torno da sua média e mediana.
+
 sns.displot(df['worst area'], kde=False, bins=10, color='black')
 plt.title('worst area')
 
