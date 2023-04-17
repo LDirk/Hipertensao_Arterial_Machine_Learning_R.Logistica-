@@ -71,3 +71,9 @@ plt.xlabel('worst perimeter')
 plt.ylabel('worst area')
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+plt.scatter(df['worst radius'], df['worst area'])
+plt.xlabel('worst radius')
+plt.ylabel('worst area')
+
+
