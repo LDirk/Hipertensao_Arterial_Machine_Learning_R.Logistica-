@@ -36,6 +36,14 @@ plt.title('mean concavity')
 sns.displot(df['worst perimeter'], kde=False, bins=10, color='black')
 plt.title('worst perimeter')
 
+# h0:Os dados seguem uma distribuição normal
+
+stat, p = shapiro(df['worst perimeter'])
+print('Estatística de teste: ', stat)
+print('Valor p: ', p)
+
+# Com uma significância abaixo de 5% eu rejeito a hipótese nula de que os dados seguem uma distribuição normal
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Olhando esse histograma, não podemos afirmar que ele possui uma distribuição normal, pois não possui a simetria em torno da sua média.
