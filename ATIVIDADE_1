@@ -43,7 +43,27 @@ for coluna in df_maligno.columns:
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Criando os histogramas das váriaveis no qual diagnóstico = benigno. 
 
+# Parâmetros. 
+# Tamanho, número de separação de barras, listras atrás, histograma com a definição das áreas = 1 (Probabilidade)
+df_benigno.hist(figsize=(13, 8), bins=20,grid=False,density=True)
+plt.show()
+
+# Aparentemente nenhuma distribuição dos dados possui distribuição normal. 
+
+# Realizando o teste de shapiro wilk. 
+
+# h0:Os dados seguem uma distribuição normal
+# h1:Os dados não seguem uma distribuição normal. 
+
+for coluna in df_benigno.columns:
+  if coluna != 'diagnosis':
+    statistic, p_valor = stats.shapiro(df_benigno[coluna].astype(float))
+    print(f'Coluna {coluna}: p-valor = {p_valor:.3f}')
+
+# Nas variáveis worst radius e worst perimeter, temos um p-valor alto, ou seja, não temos evidências para rejeitar h0. Portando, não podemos dizer que os dados não seguem uma distribuição normal. 
+# No restante, temos evidência para rejeitar h0. Logo, os dados não seguem uma distribuição normal. 
 
 
 
