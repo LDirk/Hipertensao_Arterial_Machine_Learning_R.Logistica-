@@ -107,9 +107,11 @@ plt.show()
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+summary_matrix_maligno = df_maligno.describe()
+print(summary_matrix_maligno)
 
-
-
+summary_matrix_benigno = df_benigno.describe()
+print(summary_matrix_benigno)
 
 
 
