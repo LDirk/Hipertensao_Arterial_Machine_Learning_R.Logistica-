@@ -18,7 +18,74 @@ df_benigno = df[df['diagnosis'] == 'benign']
 valores_distintos_maligno = df_maligno['diagnosis'].unique()
 valores_distintos_benigno = df_benigno['diagnosis'].unique()
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Criando os histogramas das váriaveis no qual diagnóstico = Maligno. 
+
+# Parâmetros. 
+# Tamanho, número de separação de barras, listras atrás, histograma com a definição das áreas = 1 (Probabilidade)
+df_maligno.hist(figsize=(13, 8), bins=20,grid=False,density=True)
+plt.show()
+
+# Aparentemente nenhuma distribuição dos dados possui distribuição normal. 
+
+# Realizando o teste de shapiro wilk. 
+
+# h0:Os dados seguem uma distribuição normal
+# h1:Os dados não seguem uma distribuição normal. 
+
+for coluna in df_maligno.columns:
+  if coluna != 'diagnosis':
+    statistic, p_valor = stats.shapiro(df_maligno[coluna].astype(float))
+    print(f'Coluna {coluna}: p-valor = {p_valor:.3f}')
+
+# Portanto, como o p-valor é muito baixo, temos evidências para rejeitar h0. Logo, os dados não seguem uma distribuição normal. 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Não possui nenhuma semelhança com a distribuição normal. 
 # A sua grande massa de probabilidade se encontra nos valores 0 a 100. 
