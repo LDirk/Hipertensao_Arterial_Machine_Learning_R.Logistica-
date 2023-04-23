@@ -1,13 +1,22 @@
-# 'worst concave points'
-# 'mean concavity'
-# 'worst perimeter'
-# 'worst radius'
-# 'worst area'
-
+# Importando as bibliotecas a serem utilizadas
 import pandas as pd
-import seaborn as sns
+import matplotlib.pyplot as plt
+import scipy.stats as stats
 
-df = pd.read_csv("/content/breast_cancer - breast_cancer.csv")
+# Abrindo o dataset com as colunas desejadas no estudo. 
+df = pd.read_csv('/content/breast_cancer - breast_cancer.csv',usecols=['worst concave points', 'mean concavity','worst perimeter','worst radius','worst area','diagnosis'])
+
+# Verificando os 5 primeiros registros
+df.head()
+
+
+# Separando em subconjuntos. 
+df_maligno = df[df['diagnosis'] == 'malignant']
+df_benigno = df[df['diagnosis'] == 'benign']
+
+# Verificando os valores distintos da coluna
+valores_distintos_maligno = df_maligno['diagnosis'].unique()
+valores_distintos_benigno = df_benigno['diagnosis'].unique()
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
