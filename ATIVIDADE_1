@@ -65,10 +65,46 @@ for coluna in df_benigno.columns:
 # Nas variáveis worst radius e worst perimeter, temos um p-valor alto, ou seja, não temos evidências para rejeitar h0. Portando, não podemos dizer que os dados não seguem uma distribuição normal. 
 # No restante, temos evidência para rejeitar h0. Logo, os dados não seguem uma distribuição normal. 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Gráficos de dispersão dois-a-dois para classificados como malignant
+
+# Parametros
+# Dataset, tamanho
+sns.pairplot(df_maligno)
+
+print("")
+
+# Criando a matriz de correlação de pearson. 
 
 
+correlacao = df_maligno.corr()
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlacao, annot=True)
+plt.show()
+
+# Através do gráfico e da matriz de correlação, observamos que nas variáveis com classificação 'malignant' , apenas radius x perimeter, radius x area e perimiter x area possui correlação forte.
+# Porém, isto é obvio, pós uma tem origem na outra. 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Gráficos de dispersão dois-a-dois para classificados como benignant
+
+# Parametros
+# Dataset, tamanho
+sns.pairplot(df_benigno)
+
+print("")
+
+# Criando a matriz de correlação de pearson. 
 
 
+correlacao = df_benigno.corr()
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlacao, annot=True)
+plt.show()
+
+# De forma análoga ao maligno, somente radius, area e perimetro possuem correlação 2x2.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
