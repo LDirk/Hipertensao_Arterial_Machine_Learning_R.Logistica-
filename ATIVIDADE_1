@@ -1,6 +1,7 @@
 # Importando as bibliotecas a serem utilizadas
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 import scipy.stats as stats
 
 # Abrindo o dataset com as colunas desejadas no estudo. 
