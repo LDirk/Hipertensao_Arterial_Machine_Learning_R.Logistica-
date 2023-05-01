@@ -1,0 +1,35 @@
+'''
+
+Objetivo: Estudar a relação entre o IMC e a pressão arterial sistólica em adultos com idade entre 20 e 60 anos. 
+Com isso, criar um modelo de regressão linear para prever a pressão a partir do IMC. 
+
+'''
+import pandas as pd 
+
+####################################################################################################################################################################
+# Abrindo o dataset de variáveis demográficas. 
+
+data_demograficas = pd.read_sas('/content/DEMO_I.XPT' )
+data_demograficas = data_demograficas.loc[:, ['SEQN', 'RIDAGEYR']]
+
+#data_demograficas.head()
+
+####################################################################################################################################################################
+# Pegando medida corporal
+data_body_measure = pd.read_sas('/content/BMX_I.XPT') 
+data_body_measures = data_body_measure.loc[:, ['SEQN', 'BMXBMI']]
+
+#data_body_measures.head()
+
+####################################################################################################################################################################
+# Pegando pressão sangúinea
+data_blood_pressure = pd.read_sas('/content/BPX_I.XPT')
+data_blood_pressure = data_blood_pressure.loc[:, ['SEQN', 'BPXSY1']]
+
+#data_blood_pressure.head()
+
+####################################################################################################################################################################
+# Realizado o inner join entre as tabelas.
+
+merge_1 = pd.merge(data_demograficas, data_body_measures, on=["SEQN"], how="inner")
+df = pd.merge(merge_1,data_blood_pressure,on=["SEQN"], how="inner"  )
