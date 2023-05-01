@@ -1,1 +1,1 @@
-# Machine_learning_for_health
+# Atividades da disciplina: Aprendizado de máquina para saúde
