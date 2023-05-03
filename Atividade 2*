@@ -50,7 +50,7 @@ df = df.loc[(df['RIDAGEYR']>=20) & (df['RIDAGEYR']<=60.0)]
 df = df.dropna()
 print(df.isna().sum())
 
-####################################################################################################################################################################
+c
 
 # Fazendo o gráfico de dispersão
 df.plot(kind='scatter', x = 'BMXBMI', y = 'BPXSY1')
@@ -58,3 +58,12 @@ plt.xlabel('IMC')
 plt.ylabel('Pressão Arterial')
 plt.show()
 
+####################################################################################################################################################################
+X = df[['BMXBMI']]
+y = df['BPXSY1']
+
+# Cria o objeto do modelo de regressão linear
+modelo = LinearRegression()
+
+# Treina o modelo
+modelo.fit(X, y)
