@@ -34,8 +34,16 @@ data_blood_pressure = data_blood_pressure.loc[:, ['SEQN', 'BPXSY1']]
 merge_1 = pd.merge(data_demograficas, data_body_measures, on=["SEQN"], how="inner")
 df = pd.merge(merge_1,data_blood_pressure,on=["SEQN"], how="inner"  )
 
+####################################################################################################################################################################
+
 # Pegando as pessoas que possuem entre 20 e 60 anos
 df = df.loc[(df['RIDAGEYR']>=20) & (df['RIDAGEYR']<=60.0)]
 
+####################################################################################################################################################################
 
+# Fazendo o gráfico de dispersão
+df.plot(kind='scatter', x = 'BMXBMI', y = 'BPXSY1')
+plt.xlabel('IMC')
+plt.ylabel('Pressão Arterial')
+plt.show()
 
