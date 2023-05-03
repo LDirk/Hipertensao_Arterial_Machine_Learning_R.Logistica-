@@ -5,6 +5,8 @@ Com isso, criar um modelo de regressão linear para prever a pressão a partir d
 
 '''
 import pandas as pd 
+import matplotlib.pyplot as plt
+
 
 ####################################################################################################################################################################
 # Abrindo o dataset de variáveis demográficas. 
