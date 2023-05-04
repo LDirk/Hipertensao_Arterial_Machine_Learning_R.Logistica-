@@ -81,3 +81,24 @@ modelo = sm.OLS(y, X).fit()
 
 # Imprime a tabela de resultados
 print(modelo.summary())
+
+####################################################################################################################################################################
+
+
+''' 
+O modelo de regressão linear é dado por BPXSY1 = 106,49 + 0.49 * BMXBMI 
+Ou seja, o seu b0 é dado por 106,49 e o b1 0.49, isso significa que o seu intercepto tem valor 106.49 e quando altero uma unidade do IMC, tenho em média, 
+um aumento de 0.4934 da pressão arterial 
+'''
+
+'''
+Aparente, possui uma relação, entretanto, essa relação é muito fraca, os dados seguem uma certa linearidade, porém, estão muito dispersos. 
+Conseguimos verificar isto atraves do R-squared que equivale a 0.052, o que nos diz, que apenas 5% da variabilidade da pressão arterial é explicada pelo IMC
+'''
+
+'''
+Para o imc = 25:
+BPXSY1 = 106.49 + 0.49 * 25
+BPXSY1 = 118.74
+
+'''
