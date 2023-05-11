@@ -8,6 +8,12 @@ Original file is located at
 """
 
 import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 
 '''
 1. Baixe o dataset &quot;Stroke Prediction&quot; do Kaggle em formato CSV.
@@ -16,11 +22,6 @@ import pandas as pd
 explore os dados para se familiarizar com as variáveis disponíveis.
 
 '''
-
-df = pd.read_csv('/content/healthcare-dataset-stroke-data.csv', sep = ',' )
-
-df.head()
-
 
 '''
 gender: genero
@@ -35,6 +36,11 @@ bmi: imc
 smoking_status: Se já fumou, fuma ou nunca fumou
 stroke: se já teve AVC (Binário)
 '''
+
+
+df = pd.read_csv('/content/healthcare-dataset-stroke-data.csv', sep = ',' )
+
+df.head()
 
 # Verificando os valores total de registros
 len(df)
@@ -51,3 +57,55 @@ df.isnull().sum()
 
 # Removendo valores faltantes (São poucos se comparado ao numero total de registros)
 df = df.dropna()
+
+# Verificando os valores distintas:
+
+#valores_distintos = df['gender'].unique()
+#print(valores_distintos)
+
+#valores_distintos = df['ever_married'].unique()
+#print(valores_distintos)
+
+valores_distintos = df['smoking_status'].unique()
+valores_distintos
+
+# Convertendo textos para binários
+
+mapeamento_genero= {'Male': 1, 'Female': 0, 'Other': 99}
+
+mapeamento_married = {'Yes': 1, 'No': 0}
+
+mapeamento_work = {'Private':0 , 'Self-employed':1, 'Govt_job':2, 'children':3, 'Never_worked':4}
+
+mapeamento_Residence = {'Urban': 1 , 'Rural': 0}
+
+mapeamento_smok = {'formerly smoked': 0, 'never smoked': 1, 'smokes': 2, 'Unknown': 3}
+
+df['gender'] = df['gender'].map(mapeamento_genero)
+df['ever_married'] = df['ever_married'].map(mapeamento_married)
+df['work_type'] = df['work_type'].map(mapeamento_work)
+
+
+df['Residence_type'] = df['Residence_type'].map(mapeamento_Residence)
+
+df['smoking_status'] = df['smoking_status'].map(mapeamento_smok)
+
+df.head()
+
+# Separando em treino e teste 
+
+X = df.drop('stroke', axis=1)
+X = X.drop('id', axis=1)
+X = X.drop('ever_married', axis = 1)
+y = df['stroke']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression()
+model.fit(X, y)
+
+importance = model.coef_[0]
+indices = np.argsort(np.abs(importance))[::-1]
+
+for i in range(len(indices)):
+    print(f"Variável {X.columns[indices[i]]}: {importance[indices[i]]}")
