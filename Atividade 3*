@@ -102,11 +102,49 @@ df_2.reset_index(drop=True, inplace=True)
 
 ### Construção dos modelos de regressão logística
 
+## Modelo sem balanceamento:
 
+df['intercept'] = 1
 
+model = sm.Logit(df['stroke'], df[['intercept', 'gender','age','hypertension','heart_disease','work_type','Residence_type','avg_glucose_level','bmi','smoking_status']])
+result = model.fit()
 
+# Obtendo o resumo da regressão logística
+summary = result.summary()
+print(summary)
 
+# Através do summary, observamos que as variáveis gender, Residence_type, bmi e smoking_status são quase insiginificantes no modelo.
+df = df.drop(['gender', 'Residence_type', 'bmi', 'smoking_status'], axis=1)
 
+## Undersampling 
+df_1['intercept'] = 1
+
+model = sm.Logit(df_1['stroke'], df_1[['intercept', 'gender','age','hypertension','heart_disease','work_type','Residence_type','avg_glucose_level','bmi','smoking_status']])
+result = model.fit()
+
+# Obtendo o resumo da regressão logística
+summary = result.summary()
+print(summary)
+
+# No modelo balanceado por undersampling, temos que as variáveis gender, work_type, Residence_type, bmi, smoking_status  não se mostram significantes.   
+df_1= df_1.drop(['gender', 'Residence_type', 'bmi', 'smoking_status'], axis=1)  
+
+## Ajuste por peso
+df_2['intercept'] = 1
+
+model = sm.Logit(df_2['stroke'], df_2[['intercept', 'gender','age','hypertension','heart_disease','work_type','Residence_type','avg_glucose_level','bmi','smoking_status']])
+result = model.fit()
+
+# Obtendo o resumo da regressão logística
+summary = result.summary()
+print(summary)
+
+# No modelo balanceado por peso, temos que as variáveis smoking_status,bmi e gender não mostram significância
+df_2= df_2.drop(['gender', 'bmi', 'smoking_status'], axis=1)     
+
+###############################################################################################################################################################################################
+
+### Avaliando os modelos
 
 
 
