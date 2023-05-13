@@ -39,11 +39,68 @@ colunas = ['gender','age','hypertension','heart_disease','work_type','Residence_
 
 df = pd.read_csv('/content/healthcare-dataset-stroke-data.csv', sep = ',' , usecols= colunas)
 
+###############################################################################################################################################################################################
 
+### Análise exploratória dos dados e pré processamento. 
 
+## Verificar se as variáveis são correlacionadas entre si. 
+matriz_correlacao = df.corr()
+matriz_correlacao
+# Observamos que as variáveis não são correlacionadas, assim evitanto o problema de multicolinearidade
 
+## Verificando o tamanho do dataset. 
+len(df)
+# 5110 linhas
 
+## Verificando se existem dados faltantes
+df.isnull().sum()
+# Existem 201 dados faltantes na coluna bmi (IMC)
 
+# Como 201 dados são poucos na comparando com o número de registro, apenas irei remove-lós sem utilizar técnicas de imputação de dados: 
+df = df.dropna()
+
+## Convertento as variáveis discretas em uma representação numérica
+
+mapeamento_genero= {'Male': 1, 'Female': 0, 'Other': 99}
+mapeamento_work = {'Private':0 , 'Self-employed':1, 'Govt_job':2, 'children':3, 'Never_worked':4}
+mapeamento_Residence = {'Urban': 1 , 'Rural': 0}
+mapeamento_smok = {'formerly smoked': 0, 'never smoked': 1, 'smokes': 2, 'Unknown': 3}
+
+df['gender'] = df['gender'].map(mapeamento_genero)
+df['work_type'] = df['work_type'].map(mapeamento_work)
+df['Residence_type'] = df['Residence_type'].map(mapeamento_Residence)
+df['smoking_status'] = df['smoking_status'].map(mapeamento_smok)
+
+## Observamos que as variáveis age, avg_glucose_level e bmi possuem escalas bem diferentes, então, vão ser normalizadas. 
+
+colunas = ['age', 'avg_glucose_level', 'bmi']
+scaler = StandardScaler()
+df[colunas] = scaler.fit_transform(df[colunas])
+
+## Verificando se a variavel target está balanceada
+contagem = df['stroke'].value_counts()
+contagem 
+
+# A variável target não está balanceada, será necessário utilizar alguma técnica de balanceamento para evitarmos problemas devido a esse desbalanceamento.
+
+## Irei utilizar como teste duas técnicas de balancamento, Undersampling e a técnica do ajuste de pesos, com o objetivo de ver qual possui a melhor perfomance. 
+
+# Undersampling
+
+contagem_classes = df['stroke'].value_counts()
+min_observacoes = contagem_classes.min()
+df_1 = df.groupby('stroke').apply(lambda x: x.sample(min_observacoes)).reset_index(drop=True)
+
+# A juste dos pesos
+
+weights = class_weight.compute_class_weight('balanced', classes=sorted(df['stroke'].unique()), y=df['stroke'])
+class_weights = {i: weights[i] for i in range(len(weights))}
+df_2 = pd.concat([df[df['stroke'] == classe].sample(frac=class_weights[classe], replace=True) for classe in df['stroke'].unique()])
+df_2.reset_index(drop=True, inplace=True)
+
+###############################################################################################################################################################################################
+
+### Construção dos modelos de regressão logística
 
 
 
