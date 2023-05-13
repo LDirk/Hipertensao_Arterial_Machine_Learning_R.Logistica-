@@ -1,3 +1,125 @@
+### Carregando as bibliotecas 
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import statsmodels.api as sm
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.utils import class_weight
+from sklearn.metrics import roc_curve, roc_auc_score, precision_score, accuracy_score,confusion_matrix
+
+
+### Dicionário dos dados
+'''
+gender: genero
+age: idade
+hyptertension: hipertensão (Binário)
+heart_disease: doença cardiáca
+ever_married: Se o paciente já foi casado
+work_type: Tipo de trabalho de um paciente. 
+Residence_type: tipo de residência 
+avg_glucose_level: nível médio de glicose no sangue. 
+bmi: imc
+smoking_status: Se já fumou, fuma ou nunca fumou
+stroke: se já teve AVC (Binário)
+'''
+
+## Objetivo:
+'''
+Objetivo: Prever a ocorrência de AVC (Stroke)
+'''
+
+### Abrindo o dataframe
+colunas = ['gender','age','hypertension','heart_disease','work_type','Residence_type','avg_glucose_level','bmi','smoking_status','stroke']
+
+df = pd.read_csv('/content/healthcare-dataset-stroke-data.csv', sep = ',' , usecols= colunas)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+######################################################################################################################################################################################################################
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
