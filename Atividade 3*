@@ -146,154 +146,191 @@ df_2= df_2.drop(['gender', 'bmi', 'smoking_status'], axis=1)
 
 ### Avaliando os modelos
 
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-######################################################################################################################################################################################################################
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from sklearn.metrics import confusion_matrix
-import statsmodels.api as sm
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
-
-'''
-gender: genero
-age: idade
-hyptertension: hipertensão (Binário)
-heart_disease: doença cardiáca
-ever_married: Se o paciente já foi casado
-work_type: Tipo de trabalho de um paciente. 
-Residence_type: tipo de residência 
-avg_glucose_level: nível médio de glicose no sangue. 
-bmi: imc
-smoking_status: Se já fumou, fuma ou nunca fumou
-stroke: se já teve AVC (Binário)
-'''
-
-'''
-Objetivo: Prever a ocorrência de AVC
-'''
-
-colunas = ['gender','age','hypertension','heart_disease','work_type','Residence_type','avg_glucose_level','bmi','smoking_status','stroke']
-df = pd.read_csv('/content/healthcare-dataset-stroke-data.csv', sep = ',' , usecols= colunas)
-df.head()
-
-# Verificando se existem dados faltantes.
-df.isnull().sum()
-
-# Removendo valores faltantes (São poucos se comparado ao numero total de registros)
-df = df.dropna()
-
-# Convertendo textos para binários
-
-mapeamento_genero= {'Male': 1, 'Female': 0, 'Other': 99}
-mapeamento_work = {'Private':0 , 'Self-employed':1, 'Govt_job':2, 'children':3, 'Never_worked':4}
-mapeamento_Residence = {'Urban': 1 , 'Rural': 0}
-mapeamento_smok = {'formerly smoked': 0, 'never smoked': 1, 'smokes': 2, 'Unknown': 3}
-
-df['gender'] = df['gender'].map(mapeamento_genero)
-df['work_type'] = df['work_type'].map(mapeamento_work)
-df['Residence_type'] = df['Residence_type'].map(mapeamento_Residence)
-df['smoking_status'] = df['smoking_status'].map(mapeamento_smok)
-
-
-# Normalizando os dados numéricos. 
-
-# age, Normalizando os dados, bmi
-colunas = ['age', 'avg_glucose_level', 'bmi']
-scaler = StandardScaler()
-df[colunas] = scaler.fit_transform(df[colunas])
-
-
-
-# Ajustando o modelo de regressão logística
-model = sm.Logit(df['stroke'], df[['intercept', 'gender','age','hypertension','heart_disease','work_type','Residence_type','avg_glucose_level','bmi','smoking_status']])
-
-result = model.fit()
-
-# Obtendo o resumo da regressão logística
-summary = result.summary()
-
-# Imprimindo o resumo
-print(summary)
-
-# removendo as variaveis ruins 
-X = df.drop(['stroke', 'gender', 'Residence_type', 'bmi', 'smoking_status'], axis=1)
+## Modelo sem balanceamento
+X = df.drop(['stroke'], axis=1)
 y = df['stroke'] # Variável target.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
 
+model = LogisticRegression()
+model.fit(X, y)
 
 predictions = model.predict(X)
-
 accuracy = accuracy_score(y, predictions)
 print("Acurácia:", accuracy)
+
+matriz_confusao = confusion_matrix(y, predictions)
+matriz_confusao
+
+# Embora, este modelo sejá muito bom na sua acurrácia, ele praticamente errada todas as classificações sobre quem vai ter um AVC, sendo a sua maioria esmagadora falsos negativos. 
+# Logo, esse modelo será excluído de cara. 
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## Modelo por Undersampling 
+
+X = df_1.drop(['stroke'], axis=1)
+y = df_1['stroke'] # Variável target.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression()
+model.fit(X, y)
+
+predictions = model.predict(X)
+accuracy = accuracy_score(y, predictions)
+print("Acurácia:", accuracy)
+
+matriz_confusao = confusion_matrix(y, predictions)
+print(matriz_confusao)
+
+# Embora, este modelo tenha menos acurácia, sua ele possui verdadeiros positivos (o anterior não) e ainda possui uma boa taxa de verdadeiros negativos. 
+# Logo, esse modelo continuara na análise
+
+# Sensibilidade, taxas verdadeiros positivos
+
+# Calculando a sensibilidade:  taxas verdadeiros positivos
+# Extraindo os valores da matriz de confusão
+
+
+TP = matriz_confusao[1, 1]
+FN = matriz_confusao[1, 0]
+
+sensibilidade = TP / (TP + FN)
+print('Sensibilidade:' , sensibilidade)
+
+# Não irei utilizar especifidade, em um modelo que se deseja prever a ocorrência de um AVC, o que mais vale de fato é a taxas de verdadeiros positivos. 
+
+# Curva ROC 
+
+y_prob = model.predict_proba(X_test)[:, 1]
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+auc = roc_auc_score(y_test, y_prob)
+
+# Plotar a curva ROC
+plt.plot(fpr, tpr, label='Curva ROC (AUC = {:.2f})'.format(auc))
+plt.plot([0, 1], [0, 1], 'k--')  # Linha diagonal para referência
+plt.xlabel('Taxa de Falsos Positivos (FPR)')
+plt.ylabel('Taxa de Verdadeiros Positivos (TPR)')
+plt.title('Curva ROC')
+plt.legend(loc='lower right')
+plt.show()
+
+# O modelo possui uma boa curva ROC 
+# Sendo a área da sua curva 0.81, ou seja, o modelo tem uma boa discriminação
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## Modelo por ajuste dos pesos 
+
+X = df_2.drop(['stroke'], axis=1)
+y = df_2['stroke'] # Variável target.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LogisticRegression()
+model.fit(X, y)
+
+predictions = model.predict(X)
+accuracy = accuracy_score(y, predictions)
+print("Acurácia:", accuracy)
+
+matriz_confusao = confusion_matrix(y, predictions)
+print(matriz_confusao)
+
+# Sensibilidade, taxas verdadeiros positivos
+# Extraindo os valores da matriz de confusão
+TP = matriz_confusao[1, 1]
+FN = matriz_confusao[1, 0]
+
+sensibilidade = TP / (TP + FN)
+print('Sensibilidade:' , sensibilidade)
+
+# Não irei utilizar especifidade, em um modelo que se deseja prever a ocorrência de um AVC, o que mais vale de fato é a taxas de verdadeiros positivos. 
+
+# Curva ROC 
+
+y_prob = model.predict_proba(X_test)[:, 1]
+fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+auc = roc_auc_score(y_test, y_prob)
+
+# Plotar a curva ROC
+plt.plot(fpr, tpr, label='Curva ROC (AUC = {:.2f})'.format(auc))
+plt.plot([0, 1], [0, 1], 'k--')  # Linha diagonal para referência
+plt.xlabel('Taxa de Falsos Positivos (FPR)')
+plt.ylabel('Taxa de Verdadeiros Positivos (TPR)')
+plt.title('Curva ROC')
+plt.legend(loc='lower right')
+plt.show()
+
+# O modelo possui uma excelente curva roc, comparado ao modelo anterior, ele possui uma curva ROC mais para cima, tendo sua área sobre a curva ainda maior. 
+
+# Portando o modelo a ser escolhido será o modelo em que o balanceamento foi realizado pelo ajuste dos pesos. 
+# Pois possui melhor acurácia, melhor sensibilidade e melhor curva ROC
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
