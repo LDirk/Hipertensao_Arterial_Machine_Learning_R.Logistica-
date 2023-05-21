@@ -41,3 +41,62 @@ df['Codigo da variavel'] = df['Codigo da variavel'].fillna(method='ffill')
 df['Descricao_variavel'] = df['Descricao_variavel'].fillna(method='ffill')
 
 df.head(5)
+
+# Dicionário de mapeamento de unidades federativas para regiões
+mapa_regioes = {
+    
+    # Rondonia
+    '11': 'Norte',
+    # Acre
+    '12': 'Norte',
+    #Amazonas
+    '13': 'Norte',
+    # Roraima
+    '14': 'Norte',
+    # Pará
+    '15': 'Norte',
+    # Amapá
+    '16': 'Norte',
+    #Tocantis
+    '17': 'Norte',
+    # Maranhao
+    '21': 'Nordeste',
+    # Piaui
+    '22': 'Nordeste',
+    #Ceará
+    '23': 'Nordeste',
+    # Rio Grande do Norte 
+    '24': 'Nordeste',
+    # Paraiba
+    '25': 'Nordeste',
+    # Pernambuco
+    '26': 'Nordeste',
+    # Alagoas
+    '27': 'Nordeste',
+    # Sergie
+    '28': 'Nordeste',
+    #Bahia
+    '29': 'Nordeste',
+    # Minas Gerais
+    '31': 'Sudeste',
+    # Espirito Santo
+    '32': 'Sudeste',
+    # Rio de Janero
+    '33': 'Sudeste',
+    # Sao Paulo
+    '35': 'Sudeste',
+    # Paraná
+    '41': 'Sul',
+    # Santa Catarina
+    '42': 'Sul',
+    # Rio Grande do Sul
+    '43': 'Sul',
+    # Mato Grosso do Sul
+    '50': 'Centro-Oeste',
+    # Mato Grosso
+    '51': 'Centro-Oeste',
+    # Goias
+    '52': 'Centro-Oeste',
+    # Distrito Federal
+    '53': 'Centro-Oeste'
+}
