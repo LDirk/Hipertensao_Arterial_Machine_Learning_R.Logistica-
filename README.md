@@ -11,3 +11,6 @@ https://www.youtube.com/watch?v=k4fCnep7WlA
 
 Como ler os dados em R: 
 https://rpubs.com/gabriel-assuncao-ibge/pns
+
+R no colab: 
+https://colab.research.google.com/#create=true&language=r
