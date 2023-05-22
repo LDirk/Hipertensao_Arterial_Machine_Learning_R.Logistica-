@@ -100,3 +100,67 @@ mapa_regioes = {
     # Distrito Federal
     '53': 'Centro-Oeste'
 }
+
+# Unidade da federação - V0001
+# Tipo de situação censitária: Urbano, rural - V0026
+# Sexo - C006
+# Idade do morador na data de referência - C008
+# Cor ou raça - C009
+# Sabe ler e escrever - D001
+# Qual foi o curso mais elevado que ___frequentou  - D00901
+# Quando o(a) Sr(a) caminha em lugar plano, em velocidade normal, sente dor ou desconforto no peito
+# Nas duas últimas semanas, com que frequência o(a) Sr(a) teve problemas no sono, como dificuldade para adormecer, acordar frequentemente à noite ou dormir mais do que de costume?
+# Nas duas últimas semanas, com que frequência o(a) Sr(a) teve problemas por não se sentir descansado(a) e disposto(a) durante o dia, sentindo-se cansado(a), sem ter energia? 
+# "Peso - Final (em kg) (3 inteiros e 1 casa decimal)"
+# "Altura - Final (em cm) (3 inteiros)"
+#'Em geral, o(a) Sr(a) costuma comer esse tipo de verdura ou legume: '
+# Em geral, quantas vezes por dia o(a) Sr(a) come frutas? 
+# Em quantos dias da semana o(a) Sr(a) costuma tomar refrigerante? 
+# Que tipo de refrigerante o(a) Sr(a) costuma tomar? 
+# Nos últimos três meses, o(a) Sr(a) praticou algum tipo de exercício físico ou esporte? 
+# No seu trabalho, o(a) Sr(a) anda bastante a pé? 
+# No seu trabalho, o(a) Sr(a) faz faxina pesada, carrega peso ou faz outra atividade pesada que requer esforço físico intenso? 
+# Para ir ou voltar do trabalho, o(a) Sr(a) faz algum trajeto a pé ou de bicicleta? 
+# Atualmente, o(a) Sr(a) fuma algum produto do tabaco? 
+# E no passado, o(a) Sr(a) fumou algum produto do tabaco diariamente? 
+# Que idade o(a) Sr(a) tinha quando começou a fumar produto de tabaco diariamente? 
+# Algum médico já lhe deu o diagnóstico de hipertensão arterial (pressão alta)? 
+# Algum médico já lhe deu o diagnóstico de diabetes? 
+# Algum médico já lhe deu o diagnóstico de colesterol alto? 
+# Algum médico já lhe deu o diagnóstico de uma doença do coração, tal como infarto, angina, insuficiência cardíaca ou outra?
+# Algum médico já lhe deu o diagnóstico de insuficiência renal crônica? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
