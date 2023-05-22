@@ -117,21 +117,26 @@ mapa_regioes = {
 #'Em geral, o(a) Sr(a) costuma comer esse tipo de verdura ou legume - P01001'
 # Em geral, quantas vezes por dia o(a) Sr(a) come frutas? - P019
 # Em quantos dias da semana o(a) Sr(a) costuma tomar refrigerante? - P02002
+# Que tipo de refrigerante o(a) Sr(a) costuma tomar? - P02102
+# Nos últimos três meses, o(a) Sr(a) praticou algum tipo de exercício físico ou esporte? - P034
+# Quantos dias por semana o(a) Sr(a) costuma  (costumava)praticar exercício físico ou esporte? - P035
+# No seu trabalho, o(a) Sr(a) anda bastante a pé?  - P038
+# No seu trabalho, o(a) Sr(a) faz faxina pesada, carrega peso ou faz outra atividade pesada que requer esforço físico intenso? - P039
+# Em um dia normal, quanto tempo o(a) Sr(a) passa andando bastante a pé ou realizando essas atividades pesadas ou que requerem esforço físico no seu trabalho?Horas - P03905
+# Para ir ou voltar do trabalho, o(a) Sr(a) faz algum trajeto a pé ou de bicicleta? - P040
+# Atualmente, o(a) Sr(a) fuma algum produto do tabaco? -- P50
+# E no passado, o(a) Sr(a) fumou algum produto do tabaco diariamente? -- P051
+# Em média, quanto fuma por dia ou por semana Cigarros industrializados -- P05401
+# Quantos  por dia?  P05402
+# Algum médico já lhe deu o diagnóstico de hipertensão arterial (pressão alta)? -- Q00201
+# Algum médico já lhe deu o diagnóstico de diabetes? -- Q03001
+# Algum médico já lhe deu o diagnóstico de colesterol alto? -- Q060
+# Algum médico já lhe deu o diagnóstico de uma doença do coração, tal como infarto, angina, insuficiência cardíaca ou outra? -- Q06306
+# Algum médico já lhe deu o diagnóstico de AVC (Acidente Vascular Cerebral) ou derrame? -- Q068
+# Algum médico já lhe deu o diagnóstico de insuficiência renal crônica? -- Q124
 
 
-# Que tipo de refrigerante o(a) Sr(a) costuma tomar? 
-# Nos últimos três meses, o(a) Sr(a) praticou algum tipo de exercício físico ou esporte? 
-# No seu trabalho, o(a) Sr(a) anda bastante a pé? 
-# No seu trabalho, o(a) Sr(a) faz faxina pesada, carrega peso ou faz outra atividade pesada que requer esforço físico intenso? 
-# Para ir ou voltar do trabalho, o(a) Sr(a) faz algum trajeto a pé ou de bicicleta? 
-# Atualmente, o(a) Sr(a) fuma algum produto do tabaco? 
-# E no passado, o(a) Sr(a) fumou algum produto do tabaco diariamente? 
-# Que idade o(a) Sr(a) tinha quando começou a fumar produto de tabaco diariamente? 
-# Algum médico já lhe deu o diagnóstico de hipertensão arterial (pressão alta)? 
-# Algum médico já lhe deu o diagnóstico de diabetes? 
-# Algum médico já lhe deu o diagnóstico de colesterol alto? 
-# Algum médico já lhe deu o diagnóstico de uma doença do coração, tal como infarto, angina, insuficiência cardíaca ou outra?
-# Algum médico já lhe deu o diagnóstico de insuficiência renal crônica? 
+
 
 
 
