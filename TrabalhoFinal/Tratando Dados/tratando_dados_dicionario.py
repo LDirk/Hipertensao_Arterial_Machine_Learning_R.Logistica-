@@ -107,15 +107,18 @@ mapa_regioes = {
 # Idade do morador na data de referência - C008
 # Cor ou raça - C009
 # Sabe ler e escrever - D001
-# Qual foi o curso mais elevado que ___frequentou  - D00901
-# Quando o(a) Sr(a) caminha em lugar plano, em velocidade normal, sente dor ou desconforto no peito
-# Nas duas últimas semanas, com que frequência o(a) Sr(a) teve problemas no sono, como dificuldade para adormecer, acordar frequentemente à noite ou dormir mais do que de costume?
-# Nas duas últimas semanas, com que frequência o(a) Sr(a) teve problemas por não se sentir descansado(a) e disposto(a) durante o dia, sentindo-se cansado(a), sem ter energia? 
-# "Peso - Final (em kg) (3 inteiros e 1 casa decimal)"
-# "Altura - Final (em cm) (3 inteiros)"
-#'Em geral, o(a) Sr(a) costuma comer esse tipo de verdura ou legume: '
-# Em geral, quantas vezes por dia o(a) Sr(a) come frutas? 
-# Em quantos dias da semana o(a) Sr(a) costuma tomar refrigerante? 
+# Qual foi o curso mais elevado que ___frequentou  - D00901 
+# Quando o(a) Sr(a) sobe uma ladeira, um lance de escadas ou caminha rápido no plano, sente dor ou desconforto no peito - N004
+# Quando o(a) Sr(a) caminha em lugar plano, em velocidade normal, sente dor ou desconforto no peito - N005
+# Nas duas últimas semanas, com que frequência o(a) Sr(a) teve problemas no sono, como dificuldade para adormecer, acordar frequentemente à noite ou dormir mais do que de costume? - N010
+# Nas duas últimas semanas, com que frequência o(a) Sr(a) teve problemas por não se sentir descansado(a) e disposto(a) durante o dia, sentindo-se cansado(a), sem ter energia? - N011
+# "Peso - Final (em kg) (3 inteiros e 1 casa decimal)" - P00104
+# "Altura - Final (em cm) (3 inteiros)" - P00404
+#'Em geral, o(a) Sr(a) costuma comer esse tipo de verdura ou legume - P01001'
+# Em geral, quantas vezes por dia o(a) Sr(a) come frutas? - P019
+# Em quantos dias da semana o(a) Sr(a) costuma tomar refrigerante? - P02002
+
+
 # Que tipo de refrigerante o(a) Sr(a) costuma tomar? 
 # Nos últimos três meses, o(a) Sr(a) praticou algum tipo de exercício físico ou esporte? 
 # No seu trabalho, o(a) Sr(a) anda bastante a pé? 
