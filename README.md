@@ -1,5 +1,7 @@
 # Identificação de variáveis determinísticas para o diagnóstico da hipertensão arterial, uma abordagem utilizando algoritmos de Machine learning e Regressão logística
 
+## Link úteis
+
 Link dos dados do trabalho final: 
 https://www.ibge.gov.br/estatisticas/sociais/saude/9160-pesquisa-nacional-de-saude.html?=&t=downloads
 
