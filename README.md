@@ -1,5 +1,7 @@
 # Identificação de variáveis determinísticas para o diagnóstico da hipertensão arterial, uma abordagem utilizando algoritmos de Machine learning e Regressão logística
 
+## Para mais detalhes, leia o RELATORIO_FINAL.pdf
+
 ## Links úteis.
 
 Link dos dados do trabalho final: 
