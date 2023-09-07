@@ -1,4 +1,4 @@
-# Atividades da disciplina: Aprendizado de máquina para saúde
+# No presente trabalho foi utilizado os dados da PNS (Pesquisa nacional de saúde) para identificar quais variáveis são determinísticas para o diagnóstico da hipertensão arterial. 
 
 Link dos dados do trabalho final: 
 https://www.ibge.gov.br/estatisticas/sociais/saude/9160-pesquisa-nacional-de-saude.html?=&t=downloads
